@@ -1,0 +1,27 @@
+let myFirst;
+    (myFirst = [...Array(10).keys()]).shift()
+
+let n = 14
+let rem = ''
+// while (n > 0){
+//     let c = n % 2;
+//     if(c){
+//         rem.push(c);
+//         n = n / 2;
+//     }    
+// }
+
+console.log('----', rem)
+
+var variable = 10;
+        (()=>{
+        variable_3 = 35;
+        console.log(variable_3);
+        var variable_3 = 45;
+        variable_2 = 15;
+        console.log(variable);   // 20
+        })();
+        
+        console.log(variable_2);
+        console.log(variable_3);
+        var variable=30;

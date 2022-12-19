@@ -1,0 +1,49 @@
+const vehicles = [
+    { name: 'Harley Davidson Fat Boy', category: 'motorcycle'},
+    { name: 'Harley Davidson Breakout', category: 'motorcycle'},
+    { name: 'Cadillac Escalade', category:'car'}
+];
+
+const groupByCategory = vehicles.reduce((group, vehicle) => {
+     const { category } = vehicle;
+     group[category] = group[category] ?? [];
+     group[category].push(vehicle);
+     return group;
+}, {});
+
+console.log(groupByCategory)
+
+// const groupByCategory1 = vehicles.groupBy(vehicle => {
+//      return vehicle.category;
+// });
+
+// console.log(groupByCategory1)
+
+console.log('---',vehicles.reduce((out, vh) => {
+    out = vh.category === 'car' ? vh.name: out;
+    return out;
+},''));
+
+
+// count the duplicate elements in an array
+const arr = ['one', 'two', 'one', 'one', 'two', 'three'];
+const output = arr.reduce((out, ele ) => {
+    out[ele] = (out[ele] || 0) + 1
+    return out
+},{})
+
+console.log('------', output)
+
+
+// find max repeated number highest count
+let candles = [4,2,6,4,1] // answer is 4 repeats 2 times, answer is 2
+
+const oo = candles.reduce((out, ee) => {
+    console.log(out)
+    out[ee] = (out[ee] || 0) + 1;
+    return out
+}, {})
+
+console.log('---000-',Math.max(...Object.values(oo)))
+
+            

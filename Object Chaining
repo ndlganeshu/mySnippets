@@ -1,0 +1,65 @@
+var Obj = {
+  result: 0,
+  addNumber: function (a, b) {
+    this.result = a + b;
+    return this;
+  },
+
+  multiplyNumber: function (a) {
+    this.result = this.result * a;
+    return this;
+  },
+
+  divideNumber: function (a) {
+    this.result = this.result / a;
+    return this;
+  },
+};
+Obj.addNumber(10, 20).multiplyNumber(10).divideNumber(10);
+
+console.log(Obj.result);
+
+function ObjC() {
+  result: 0,
+    (this.addNumber = function (a, b) {
+      this.result = a + b;
+      return this;
+    }),
+    (this.multiplyNumber = function (a) {
+      this.result = this.result * a;
+      return this;
+    }),
+    (this.divideNumber = function (a) {
+      this.result = this.result / a;
+      return this;
+    });
+}
+
+var hh = new ObjC();
+
+hh.addNumber(10, 20).multiplyNumber(10).divideNumber(10);
+console.log('=====s', hh.result);
+
+// ObjC.addNumber(10, 20).multiplyNumber(10).divideNumber(10);
+
+const dog = function () {
+  is = null;
+  this.log = () => console.log(this.is);
+  this.bark = function () {
+    this.is = 'woofing';
+    this.log();
+    return this;
+  };
+  this.walk = function () {
+    this.is = 'walking';
+    this.log();
+    return this;
+  };
+  this.eat = function () {
+    this.is = 'eating';
+    this.log();
+    return this;
+  };
+};
+
+new dog().bark().eat().walk();

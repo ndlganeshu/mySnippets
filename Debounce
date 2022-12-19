@@ -1,0 +1,31 @@
+function debounce(func:any, wait:number, immediate?: boolean){
+    let timeout:number
+    return function(this:any): void {
+        const context = this, args = arguments
+        const later = () => {
+            if(!immediate) {
+                func.apply(context, args)
+            }
+        }
+        const callNow = immediate && !timeout
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+        if(callNow){
+            func.apply(context, args)
+        }
+    }
+    
+}
+
+====================
+function debounce1(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+function saveInput(){
+  console.log('Saving data');
+}
+const processChange = debounce1(() => saveInput());

@@ -1,0 +1,14 @@
+// convert time from 12 hour format to 24 hour format
+function convertTime(s){
+    let [hours, mins, modifier] =  s.split(':')
+    if(hours === '12'){
+        hours = '00'
+    }
+    if(modifier.includes('PM')){
+        hours = hours * 1 + 12
+    }
+    modifier = modifier.replace('AM', '').replace('PM', '')
+    return {hours, mins, modifier}
+}
+
+console.log(convertTime('2:30:23PM'))

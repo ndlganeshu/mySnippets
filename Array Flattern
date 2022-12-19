@@ -1,0 +1,26 @@
+let arr = [
+  [1, 2],
+  [3, 4],
+  [5, [7, 8, 9]],
+  [10, 11, 12, 13, 14, 15],
+];
+
+let flatArray = arr.reduce((acc, curVal) => {
+  return acc.concat(curVal);
+}, []);
+
+let flatArray1 = [].concat.apply([], arr);
+let flatArray3 = [].concat(...arr);
+
+function flatDeep(arr, d = 1) {
+  return d > 0
+    ? arr.reduce(
+        (acc, val) =>
+          acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val),
+        []
+      )
+    : arr.slice();
+}
+let flatArray4 = flatDeep(arr, Infinity);
+
+console.log(flatArray4);

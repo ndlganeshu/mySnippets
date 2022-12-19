@@ -1,0 +1,10 @@
+var a = [];
+
+a.push = function(item) {
+    Array.prototype.push.call(this, item);
+    this.onPush(item);
+};
+
+a.onPush = function(obj) {
+    console.log('-----pushing-----', obj)
+};

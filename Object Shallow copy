@@ -1,0 +1,26 @@
+const obj = {
+ a:1
+}
+const obj2 = {
+ b:2,
+ c:obj // here c's value is a reference to the other object called obj
+}
+const copy = Object.assign({},obj2) // here obj2 is a source object 
+// changing the copied object's value 
+copy.c.a = 1111;
+
+console.log(copy.c.a === obj.a) // true
+
+// using spread operator
+const copy2 = {...obj2}
+copy2.c.a = 3333;
+console.log(copy2.c.a === obj.a) // true
+
+
+const copy3 = {b: obj2.b, c: obj2.c}
+copy3.c.a = 777;
+console.log(copy3.c.a === obj.a) // true
+
+const copy4 = {...obj2, b: obj2.b, c: obj2.c}
+copy4.c.a = 777;
+console.log(copy4.c.a === obj.a) // true

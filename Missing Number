@@ -1,0 +1,80 @@
+const mArray= [1,3,4,5,6, 10, 15]
+
+
+let missingNum = 1;
+for(let i = 0; i < mArray.length; i++){
+    let currentEle = mArray[i]
+
+      
+    if(missingNum < currentEle ){
+            console.log( '==out=', currentEle ,'==missing===',missingNum)
+        do{
+               missingNum++
+             if(missingNum < currentEle){
+                 console.log( '==in=', currentEle ,'==missing===',missingNum)
+             }
+        }while(missingNum <= currentEle)
+
+        continue;
+    }
+    missingNum++
+}
+
+const find_missing = function(input) {
+let n = input.length + 1;
+let sum = 0;
+for (let i in input) {
+sum += input[i];
+}
+return Math.floor((n * (n + 1)) / 2) - sum;
+};
+
+
+
+const findMissing = num => {
+  const max = Math.max(...num); // Will find highest number
+  const min = Math.min(...num); // Will find lowest number
+  const missing = []
+
+  for(let i=min; i<= max; i++) {
+    if(!num.includes(i)) { // Checking whether i(current value) present in num(argument)
+      missing.push(i); // Adding numbers which are not in num(argument) array
+    }
+  }
+  return missing;
+}
+
+console.log('--fff--',findMissing([1,4,15]));
+// ============================================================
+function findMissedNum(arrayOfNumbers, n = 100) {
+    if(arrayOfNumbers.length === n) {
+      console.log("no number is missed");
+    }
+    if(arrayOfNumbers.length < (n - 1) ) {
+      console.log("more than one number is missed")
+    }
+    let totalSum = (n * (n+1)) / 2;
+    let sumOfArray = 0;
+    
+    for(let i of arrayOfNumbers){
+        sumOfArray += i;
+    }
+    
+    return totalSum - sumOfArray;
+}
+// create an array with values 0 to 100
+let arrayOfNumbers = Array.from( Array(101).keys())
+
+// remove the 0th element 
+arrayOfNumbers.shift();
+
+// now the array will 1 to 100
+
+// remove the value at index 50.(means remove 51 from the array)
+arrayOfNumbers.splice(50, 1)
+
+// now the array is 1 to 100 but without the number 51
+
+let missedNum = findMissedNum(arrayOfNumbers, 100);
+console.log("The missing number is :", missedNum)
+// ============================================================

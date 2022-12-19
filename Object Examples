@@ -1,0 +1,47 @@
+let avv = {
+    name: 'Ganesh',
+    desig: 'Software',
+    getInfo: function() { 
+        return this.name + '  '+ this.desig
+    }
+
+}
+
+let b = avv;
+
+b.name = 'Ravi'
+// let bb = new avv()
+console.log('---', b.getInfo())
+
+function avv2() {
+    let name= 'Ganesh'
+    let desig= 'Software'
+    let getInfo= function() { 
+        return this.name + '  '+ this.desig
+    }
+
+    return getInfo
+
+}
+
+let vv2 = new avv2();
+console.log(vv2())
+
+// 'first.thirst'
+var myR = function (cur, key) {
+  return cur[key];
+};
+var traverse = function (obj, keys) {
+  return keys.split('.').reduce(myR, obj);
+};
+
+var obj = {
+  first: { thirst: 'yo' },
+  second: { beckon: 'dud' },
+};
+var keys = 'first.thirst';
+console.log('===========', traverse(obj, keys));
+
+for(ob of obj){
+  console.log(ob)
+}

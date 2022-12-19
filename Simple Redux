@@ -1,0 +1,50 @@
+
+/////index.js
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { reducer } from "./reducer";
+
+  <Provider store={store}>
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </Provider>
+
+//// reducer.js
+const initialState = {
+  products: []
+}
+
+export const reducer = (state=initialState, action) => {
+  switch(action.type){
+    case 'ADD': 
+      return {...state, products:action.payload}
+    default:
+      return state
+  }
+}
+
+
+////products.js
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+export default function Products() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+
+  React.useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((res) => dispatch({ type: "ADD", payload: res.products }));
+  }, []);
+  
+  return (
+    <div>
+      ...Products
+      {products.map((product) => {
+        return <div>{product.title}</div>;
+      })}
+    </div>
+  );
+}
