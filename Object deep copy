@@ -1,3 +1,5 @@
+// No shared references
+// Copy all the values and create new references
 const obj = {
  a:1
 }
@@ -15,3 +17,5 @@ console.log(obj2.c) // obj
 console.log(copy.c.a) // 1111
 
 console.log(copy.c.a === obj.a) // false
+obj.a = 88888;
+console.log(copy.c.a) // 1111
