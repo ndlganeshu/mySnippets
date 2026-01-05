@@ -10,6 +10,8 @@ const copy = JSON.parse(JSON.stringify(obj2)) // here obj2 is a source object
 // changing the copied object's value 
 copy.c.a = 1111;
 
+console.log(obj.a) // 1
+console.log(obj2.c) // obj
+console.log(copy.c.a) // 1111
+
 console.log(copy.c.a === obj.a) // false
-
-
