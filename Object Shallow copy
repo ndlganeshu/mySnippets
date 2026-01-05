@@ -1,16 +1,34 @@
+// copy only the first level references, for remaining all new references will be created.
+const otherObj = {
+ name: 'Hello'
+}
 const obj = {
- a:1
+ a:1,
+ otherObj
 }
 const obj2 = {
  b:2,
  c:obj // here c's value is a reference to the other object called obj
 }
+
+const copy7 = Object.assign({},obj2);
+// after shallow copy, now changing the original obj2 b value but still copy7 value won't change,
+// because shallow copy will copy first level values and references 
+// but remaining levels copied with original references
+obj2.b = 555;
+otherObj.name = 'Ganesh';
+
+console.log('--original---',obj2.b);
+console.log('--copied---',copy7.b);
+console.log('--copied---',copy7.c);
+
+
 const copy = Object.assign({},obj2) // here obj2 is a source object 
 // changing the copied object's value 
 copy.c.a = 1111;
 
 console.log(copy.c.a === obj.a) // true
-
+console.log(copy.c.a) // 1111
 // using spread operator
 const copy2 = {...obj2}
 copy2.c.a = 3333;
